@@ -21,11 +21,11 @@ jobs:
         run: npm run build
         working-directory: .
         env:
-          OUTPUT_DIR: dist
+          OUTPUT_DIR: .
       - name: Validate build output
         run: "
 
-          \          if [ ! -d \"dist\" ]; then
+          \          if [ ! -d \".\" ]; then
 
           \            echo \"Error: Build output directory does not exist\"
 
@@ -35,7 +35,7 @@ jobs:
 
           \         \ 
 
-          \          if [ ! -f \"dist/index.html\" ]; then
+          \          if [ ! -f \"./index.html\" ]; then
 
           \            echo \"Error: index.html not found in build output\"
 
@@ -59,7 +59,7 @@ jobs:
 
           \          # Upload HTML files with no caching
 
-          \          aws s3 sync dist
+          \          aws s3 sync .
           s3://bucket-c8facd93-20241029162548546800000001
           \\n            --exclude \"*\" \\n            --include \"*.html\"
           \\n            --cache-control \"no-cache,no-store,must-revalidate\"
@@ -68,7 +68,7 @@ jobs:
 
           \          # Upload assets with long-term caching
 
-          \          aws s3 sync dist
+          \          aws s3 sync .
           s3://bucket-c8facd93-20241029162548546800000001
           \\n            --exclude \"*.html\" \\n            --include \"*.js\"
           \\n            --include \"*.css\" \\n            --include \"*.png\"
@@ -81,7 +81,7 @@ jobs:
 
           \          # Upload remaining files with moderate caching
 
-          \          aws s3 sync dist
+          \          aws s3 sync .
           s3://bucket-c8facd93-20241029162548546800000001
           \\n            --exclude \"*.html\" \\n            --exclude \"*.js\"
           \\n            --exclude \"*.css\" \\n            --exclude \"*.png\"
