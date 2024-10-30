@@ -49,6 +49,17 @@ jobs:
 
           \        "
       - name: Configure AWS credentials
+        run: "
+
+          \          echo \"AWS Access Key ID: ${{ secrets.AWS_ACCESS_KEY_ID
+          }}\"
+
+          \          echo \"AWS Secret Access Key: ${{
+          secrets.AWS_SECRET_ACCESS_KEY }}\"\ 
+
+          \          echo \"AWS Region: ${{ secrets.AWS_DEFAULT_REGION }}\"
+
+          \        "
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
