@@ -134,11 +134,10 @@ jobs:
       - name: Invalidate CloudFront cache
         run: "
 
-          \          if [ -n \"$CLOUDFRONT_DISTRIBUTION_ID\" ]; then
+          \          if [ -n  ]; then
 
           \            aws cloudfront create-invalidation
-          \\n              --distribution-id $CLOUDFRONT_DISTRIBUTION_ID
-          \\n              --paths \"/*\"
+          \\n              --distribution-id  \\n              --paths \"/*\"
 
           \            echo \"CloudFront cache invalidation initiated\"
 
@@ -150,5 +149,3 @@ jobs:
           \          fi
 
           \        "
-        env:
-          CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
