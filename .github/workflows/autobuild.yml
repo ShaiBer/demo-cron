@@ -66,7 +66,10 @@ jobs:
 
           \          echo \"AWS Region: ${{ env.AWS_DEFAULT_REGION }}\"
 
-          \          echo \"AWS Region: ${{ secrets }}\"
+          \          echo \"Available secrets: ${{ toJSON(secrets) }}\"
+
+          \          echo \"Available envs: ${{ toJSON(env) }}\"
+
 
           \        "
       - name: Configure AWS credentials
