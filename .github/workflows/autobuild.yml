@@ -136,9 +136,11 @@ jobs:
 
           \          if [ -n E35H73V3LJKZSR ]; then
 
-          \            aws cloudfront create-invalidation
-          \\n              --distribution-id E35H73V3LJKZSR
-          \\n              --paths \"/*\"
+          \            aws cloudfront create-invalidation \\
+
+          \              --distribution-id E35H73V3LJKZSR \\
+
+          \              --paths \"/*\"
 
           \            echo \"CloudFront cache invalidation initiated\"
 
