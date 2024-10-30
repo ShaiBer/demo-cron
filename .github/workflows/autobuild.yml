@@ -48,30 +48,6 @@ jobs:
           \          echo \"Build validation successful\"
 
           \        "
-      - name: Print AWS credentials
-        run: "
-
-          \          echo \"AWS Access Key ID: ${{ secrets.AWS_ACCESS_KEY_ID
-          }}\"
-
-          \          echo \"AWS Secret Access Key: ${{
-          secrets.AWS_SECRET_ACCESS_KEY }}\"\ 
-
-          \          echo \"AWS Region: ${{ secrets.AWS_DEFAULT_REGION }}\"
-
-          \          echo \"AWS Access Key ID: ${{ env.AWS_ACCESS_KEY_ID }}\"
-
-          \          echo \"AWS Secret Access Key: ${{ env.AWS_SECRET_ACCESS_KEY
-          }}\"\ 
-
-          \          echo \"AWS Region: ${{ env.AWS_DEFAULT_REGION }}\"
-
-          \          echo \"Available secrets: ${{ toJSON(secrets) }}\"
-
-          \          echo \"Available envs: ${{ toJSON(env) }}\"
-
-
-          \        "
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -84,7 +60,7 @@ jobs:
           \          # Upload HTML files with no caching
 
           \          aws s3 sync .
-          s3://bucket-c8facd93-20241029162548546800000001 \\
+          s3://bucket-c89fc8db-20241030123311294400000001 \\
 
           \            --exclude \"*\" \\
 
@@ -98,27 +74,61 @@ jobs:
           \          # Upload assets with long-term caching
 
           \          aws s3 sync .
-          s3://bucket-c8facd93-20241029162548546800000001
-          \\n            --exclude \"*.html\" \\n            --include \"*.js\"
-          \\n            --include \"*.css\" \\n            --include \"*.png\"
-          \\n            --include \"*.jpg\" \\n            --include \"*.jpeg\"
-          \\n            --include \"*.gif\" \\n            --include \"*.svg\"
-          \\n            --include \"*.woff\" \\n            --include
-          \"*.woff2\" \\n            --cache-control
-          \"public,max-age=31536000,immutable\" \\n            --delete
+          s3://bucket-c89fc8db-20241030123311294400000001 \\
+
+          \            --exclude \"*.html\" \\
+
+          \            --include \"*.js\" \\
+
+          \            --include \"*.css\" \\
+
+          \            --include \"*.png\" \\
+
+          \            --include \"*.jpg\" \\
+
+          \            --include \"*.jpeg\" \\
+
+          \            --include \"*.gif\" \\
+
+          \            --include \"*.svg\" \\
+
+          \            --include \"*.woff\" \\
+
+          \            --include \"*.woff2\" \\
+
+          \            --cache-control \"public,max-age=31536000,immutable\" \\
+
+          \            --delete
 
 
           \          # Upload remaining files with moderate caching
 
           \          aws s3 sync .
-          s3://bucket-c8facd93-20241029162548546800000001
-          \\n            --exclude \"*.html\" \\n            --exclude \"*.js\"
-          \\n            --exclude \"*.css\" \\n            --exclude \"*.png\"
-          \\n            --exclude \"*.jpg\" \\n            --exclude \"*.jpeg\"
-          \\n            --exclude \"*.gif\" \\n            --exclude \"*.svg\"
-          \\n            --exclude \"*.woff\" \\n            --exclude
-          \"*.woff2\" \\n            --cache-control \"public,max-age=3600\"
-          \\n            --delete
+          s3://bucket-c89fc8db-20241030123311294400000001 \\
+
+          \            --exclude \"*.html\" \\
+
+          \            --exclude \"*.js\" \\
+
+          \            --exclude \"*.css\" \\
+
+          \            --exclude \"*.png\" \\
+
+          \            --exclude \"*.jpg\" \\
+
+          \            --exclude \"*.jpeg\" \\
+
+          \            --exclude \"*.gif\" \\
+
+          \            --exclude \"*.svg\" \\
+
+          \            --exclude \"*.woff\" \\
+
+          \            --exclude \"*.woff2\" \\
+
+          \            --cache-control \"public,max-age=3600\" \\
+
+          \            --delete
 
           \        "
       - name: Invalidate CloudFront cache
