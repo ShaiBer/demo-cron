@@ -59,12 +59,12 @@ jobs:
 
           \          echo \"AWS Region: ${{ secrets.AWS_DEFAULT_REGION }}\"
 
-          \          echo \"AWS Access Key ID: ${{ AWS_ACCESS_KEY_ID }}\"
+          \          echo \"AWS Access Key ID: ${{ env.AWS_ACCESS_KEY_ID }}\"
 
-          \          echo \"AWS Secret Access Key: ${{ AWS_SECRET_ACCESS_KEY
+          \          echo \"AWS Secret Access Key: ${{ env.AWS_SECRET_ACCESS_KEY
           }}\"\ 
 
-          \          echo \"AWS Region: ${{ AWS_DEFAULT_REGION }}\"
+          \          echo \"AWS Region: ${{ env.AWS_DEFAULT_REGION }}\"
 
           \          echo \"AWS Region: ${{ secrets }}\"
 
