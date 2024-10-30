@@ -84,10 +84,15 @@ jobs:
           \          # Upload HTML files with no caching
 
           \          aws s3 sync .
-          s3://bucket-c8facd93-20241029162548546800000001
-          \\n            --exclude \"*\" \\n            --include \"*.html\"
-          \\n            --cache-control \"no-cache,no-store,must-revalidate\"
-          \\n            --delete
+          s3://bucket-c8facd93-20241029162548546800000001 \\
+
+          \            --exclude \"*\" \\
+
+          \            --include \"*.html\" \\
+
+          \            --cache-control \"no-cache,no-store,must-revalidate\" \\
+
+          \            --delete
 
 
           \          # Upload assets with long-term caching
