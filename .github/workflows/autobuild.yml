@@ -18,7 +18,7 @@ jobs:
         run: npm ci
         working-directory: .
       - name: Build static website
-        run: ""
+        run: npm run build
         working-directory: .
         env:
           OUTPUT_DIR: .
@@ -60,7 +60,7 @@ jobs:
           \          # Upload HTML files with no caching
 
           \          aws s3 sync .
-          s3://bucket-c86e8012-20241030134858291600000001 \\
+          s3://bucket-c80242d9-20241031151118552600000001 \\
 
           \            --exclude \"*\" \\
 
@@ -74,7 +74,7 @@ jobs:
           \          # Upload assets with long-term caching
 
           \          aws s3 sync .
-          s3://bucket-c86e8012-20241030134858291600000001 \\
+          s3://bucket-c80242d9-20241031151118552600000001 \\
 
           \            --exclude \"*.html\" \\
 
@@ -104,7 +104,7 @@ jobs:
           \          # Upload remaining files with moderate caching
 
           \          aws s3 sync .
-          s3://bucket-c86e8012-20241030134858291600000001 \\
+          s3://bucket-c80242d9-20241031151118552600000001 \\
 
           \            --exclude \"*.html\" \\
 
@@ -134,11 +134,11 @@ jobs:
       - name: Invalidate CloudFront cache
         run: "
 
-          \          if [ -n E35H73V3LJKZSR ]; then
+          \          if [ -n E2OUQGHGZIGLF9 ]; then
 
           \            aws cloudfront create-invalidation \\
 
-          \              --distribution-id E35H73V3LJKZSR \\
+          \              --distribution-id E2OUQGHGZIGLF9 \\
 
           \              --paths \"/*\"
 
