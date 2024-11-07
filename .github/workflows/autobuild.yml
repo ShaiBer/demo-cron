@@ -6,6 +6,9 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      SOME_KEY_2: some value 2
+      Some_KEY: some value
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -60,7 +63,7 @@ jobs:
           \          # Upload HTML files with no caching
 
           \          aws s3 sync .
-          s3://bucket-c81a09cb-20241101152520911800000001 \\
+          s3://bucket-c8c85af8-20241107174047757100000001 \\
 
           \            --exclude \"*\" \\
 
@@ -74,7 +77,7 @@ jobs:
           \          # Upload assets with long-term caching
 
           \          aws s3 sync .
-          s3://bucket-c81a09cb-20241101152520911800000001 \\
+          s3://bucket-c8c85af8-20241107174047757100000001 \\
 
           \            --exclude \"*.html\" \\
 
@@ -104,7 +107,7 @@ jobs:
           \          # Upload remaining files with moderate caching
 
           \          aws s3 sync .
-          s3://bucket-c81a09cb-20241101152520911800000001 \\
+          s3://bucket-c8c85af8-20241107174047757100000001 \\
 
           \            --exclude \"*.html\" \\
 
@@ -134,11 +137,11 @@ jobs:
       - name: Invalidate CloudFront cache
         run: "
 
-          \          if [ -n E1LIZD0T409OYN ]; then
+          \          if [ -n E1NT380KEV4CH3 ]; then
 
           \            aws cloudfront create-invalidation \\
 
-          \              --distribution-id E1LIZD0T409OYN \\
+          \              --distribution-id E1NT380KEV4CH3 \\
 
           \              --paths \"/*\"
 
