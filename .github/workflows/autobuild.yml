@@ -63,7 +63,7 @@ jobs:
           \          # Upload HTML files with no caching
 
           \          aws s3 sync .
-          s3://bucket-c8c85af8-20241202193949102700000001 \\
+          s3://bucket-c8c85af8-20241202230708561000000001 \\
 
           \            --exclude \"*\" \\
 
@@ -77,7 +77,7 @@ jobs:
           \          # Upload assets with long-term caching
 
           \          aws s3 sync .
-          s3://bucket-c8c85af8-20241202193949102700000001 \\
+          s3://bucket-c8c85af8-20241202230708561000000001 \\
 
           \            --exclude \"*.html\" \\
 
@@ -107,7 +107,7 @@ jobs:
           \          # Upload remaining files with moderate caching
 
           \          aws s3 sync .
-          s3://bucket-c8c85af8-20241202193949102700000001 \\
+          s3://bucket-c8c85af8-20241202230708561000000001 \\
 
           \            --exclude \"*.html\" \\
 
